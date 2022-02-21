@@ -51,6 +51,10 @@ public class Movement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
+            if(playerVelocity.y < 0)
+            {
+                playerVelocity.y = 0;
+            }
             playerVelocity.y += Mathf.Sqrt(flap * -2.0f * gravityValue);
         }
         playerVelocity.y += gravityValue * Time.deltaTime;
