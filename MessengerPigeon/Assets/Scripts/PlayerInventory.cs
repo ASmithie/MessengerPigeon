@@ -7,6 +7,8 @@ public class PlayerInventory : MonoBehaviour
 
     public bool hasMessage = false;
 
+    public GameObject MessageManager;
+
     public void GiveMessage()
     {
         if (hasMessage)
@@ -16,6 +18,7 @@ public class PlayerInventory : MonoBehaviour
         {
             Debug.Log("Message aquired");
             hasMessage = true;
+            MessageManager.GetComponent<MessageManager>().SpawnDropOff();
         }
     }
 
@@ -25,6 +28,7 @@ public class PlayerInventory : MonoBehaviour
         {
             Debug.Log("Message Dropped");
             hasMessage = false;
+            MessageManager.GetComponent<MessageManager>().SpawnMessage();
         } else
         {
             Debug.Log("You need to pick up a message");

@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class MessageManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    public GameObject message;
+    public GameObject dropOff;
+
     void Start()
     {
+
+        SpawnMessage();
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SpawnMessage()
     {
-        
+        Instantiate(message, new Vector3(50f, 50f, 50f), Quaternion.identity, transform);
+    }
+
+    public void SpawnDropOff()
+    {
+        Instantiate(dropOff, new Vector3(-50f, 50f, -50f), Quaternion.identity, transform);
     }
 }
