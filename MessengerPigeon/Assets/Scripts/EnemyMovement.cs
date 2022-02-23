@@ -79,8 +79,5 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawSphere(transform.position, maxSeeingDistance);
-    }
+    
 }
