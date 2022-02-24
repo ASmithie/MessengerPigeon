@@ -37,7 +37,7 @@ public class EnemyMovement : MonoBehaviour
         //Shoots raycast to get distance between player and enemy
         RaycastHit hitDistance;
         Physics.Raycast(transform.position, player.transform.position - transform.position, out hitDistance);
-        Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green, 1f);
+        
 
         //checks if player is with a set distance of the enemy, if not the enemy wonders to random points patrolling
         if (hitDistance.distance < maxSeeingDistance)
@@ -46,13 +46,13 @@ public class EnemyMovement : MonoBehaviour
             if (Time.time > nextActionTime)
             {
                 nextActionTime = Time.time + period;
-
+                Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green, 1f);
 
                 RaycastHit hitPosition;
                 //Can the enemy see the player
                 if (Physics.Raycast(transform.position, player.transform.position - transform.position, out hitPosition))
                 {
-                    //Update the position the enemy moves toward
+                    //Update the position the enemy moves toward 
                     heading = player.transform.GetChild(1).gameObject.transform.position;
 
                     Debug.DrawRay(transform.position, heading - transform.position, Color.red, 10);
@@ -80,6 +80,11 @@ public class EnemyMovement : MonoBehaviour
                 roaming = true;
             }
         }
+    }
+
+    private void Start()
+    {
+        roamNode = new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY), Random.Range(minZ, maxZ));
     }
 
 
