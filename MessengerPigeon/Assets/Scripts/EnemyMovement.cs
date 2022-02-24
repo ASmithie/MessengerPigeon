@@ -21,6 +21,16 @@ public class EnemyMovement : MonoBehaviour
     public Vector3 roamNode;
 
 
+    public float minX = -3000f;
+    public float maxX = 3000f;
+
+    public float minY = 30f;
+    public float maxY = 500f;
+
+    public float minZ = -3000f;
+    public float maxZ = 3000f;
+
+
     // FixedUpdate is called once per fixed framerate frame
     void FixedUpdate()
     {
@@ -52,11 +62,13 @@ public class EnemyMovement : MonoBehaviour
 
 
             //Dash towards player
+            transform.LookAt(heading);
             transform.position = Vector3.MoveTowards(transform.position, heading, step);
         } else
         {
             if (roaming)
             {
+                transform.LookAt(roamNode);
                 transform.position = Vector3.MoveTowards(transform.position, roamNode, 2f);
                 if (transform.position == roamNode)
                 {
@@ -64,7 +76,7 @@ public class EnemyMovement : MonoBehaviour
                 }
             } else
             {
-                roamNode = new Vector3(Random.Range(-200f, 200f), Random.Range(0f, 200f), Random.Range(-200f, 200f));
+                roamNode = new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY), Random.Range(minZ, maxZ));
                 roaming = true;
             }
         }
