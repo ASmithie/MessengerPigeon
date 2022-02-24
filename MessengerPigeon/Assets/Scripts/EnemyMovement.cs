@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -76,6 +77,7 @@ public class EnemyMovement : MonoBehaviour
         {
             Debug.Log("Caught");
             Debug.Log(heading);
+            SceneManager.LoadScene("LoseScreen");
         }
     }
 
