@@ -81,5 +81,8 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, maxSeeingDistance);
+    }
 }
